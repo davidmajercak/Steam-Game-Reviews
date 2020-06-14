@@ -1,0 +1,35 @@
+body {
+	color: #FFF;
+	background: #000;
+	font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+	font-size: 2em;
+	text-align: center;
+}
+
+form {
+	margin-top: 25px;
+}
+
+form * {
+	margin: 0 auto;
+}
+
+.caption {
+	margin: 5px 0;
+}
+
+.jumbotron {
+	background-color: #730071;
+}
+
+.btn-primary {
+	background-color: #000;
+	border: none;
+}
+
+.navbar {
+	margin-bottom: 100px;
+}

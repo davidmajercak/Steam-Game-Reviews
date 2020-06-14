@@ -1,0 +1,31 @@
+<%- include ("partials/header")%>
+
+<div class="container">
+
+		
+	
+	<h1>
+		Add a new Game
+	</h1>
+	
+	<form action="/games" method="POST">
+		<div class="form-group">
+			<input class="form-control col-6" type="text" name="name" placeholder="Name of Game">
+		</div>
+		<div class="form-group">
+			<input class="form-control col-6" type="text" name="image" placeholder="Image URL">
+		</div>
+		<div class="form-group">
+			<button class="btn btn-large col-6 btn-success btn-block">
+				Submit
+			</button>
+		</div>
+		
+	</form>
+	<div class="container text-center">
+		<a href="/games">Go Back</a>
+	</div>
+	
+
+</div>
+<%- include ("partials/footer")%>

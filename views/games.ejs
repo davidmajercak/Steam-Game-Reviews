@@ -1,0 +1,29 @@
+<%- include ("partials/header")%>
+
+<div class="container">
+	<header class="jumbotron">
+		<h1>
+			Welcome to Steam Game Reviews
+		</h1>
+		<p>
+			View a curated list of Steam Games
+		</p>
+		<p>
+			<a class="btn btn-primary btn-lg" href="/games/new">Add a New Game</a>
+		</p>
+	</header>
+
+	<div class="row text-center">
+		<% games.forEach(function(game){ %>
+			<div class="col-md-4 col-sm-6">
+				<div class="caption">
+					<h4><%= game.name%></h4>
+				</div>
+				
+				<img src="<%=game.image%>" class="img-thumbnail">
+			</div>
+		<% }) %>
+	</div>
+</div>
+
+<%- include ("partials/footer")%>
