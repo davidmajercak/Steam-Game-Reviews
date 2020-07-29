@@ -1,13 +1,17 @@
 var express		 = require("express"),
 	app			 = express(),
 	bodyParser	 = require("body-parser"),
-	mongoose 	 = require("mongoose");
+	mongoose 	 = require("mongoose"),
+	Game 		 = require("./models/game"),
+	seedDB		 = require("./seeds");
 
+seedDB();
 
 //fix MongoDB depreciation warnings
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useUnifiedTopology', true);
-mongoose.connect("mongodb://localhost/Steam-Game-Reviews");
+mongoose.connect("mongodb://127.0.0.1:27017/Steam-Game-Reviews");
+//Go to http://127.0.0.1:3000/ when running locally (port 3000 is used for testing express apps)
 
 //Add this to serve the public folder for CSS
 app.use(express.static("public"));
@@ -17,18 +21,10 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-
 //Add this to make .ejs files the default (can leave off the .ejs)
 app.set("view engine", "ejs");
 
-//Setup Mongoose Schema
-var gameSchema = new mongoose.Schema({
-	name: String,
-	image: String,
-	description: String
-});
 
-var Game = mongoose.model("Game", gameSchema);
 
 // Game.create({
 // 				name: "Gunfire Reborn", 
@@ -55,8 +51,8 @@ app.get("/games", function(req, res) {
 		} else {
 			res.render("index", {games:games});
 		}
-	})
-})
+	});
+});
 
 //post request should be named the same as the get request (REST)
 app.post("/games", function(req, res) {
@@ -96,8 +92,6 @@ app.get("/games/:id", function(req, res) {
 			res.render("show", {game: foundGame});
 		}
 	});
-	
-	
 });
 
 
