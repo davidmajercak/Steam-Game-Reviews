@@ -1,13 +1,22 @@
 <%- include ("partials/header")%>
 
 <h1>
-	<%= game[0].name %>
+	<%= game.name %>
 </h1>
 
-<img src="<%= game[0].image %>">
+<img src="<%= game.image %>">
 
 <p>
-	<%= game[0].description %>
+	<%= game.description %>
 </p>
+
+<% game.comments.forEach(function(comment) { %>
+	<p>
+		<strong>
+			<%= comment.author %>
+		</strong>
+		<%= comment.author %> - <%= comment.text%>
+	</p>
+<% }) %>
 
 <%- include ("partials/footer")%>

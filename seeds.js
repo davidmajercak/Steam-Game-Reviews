@@ -33,7 +33,7 @@ function seedDB() {
             }
             console.log("removed comments!");
             //Add seeded comments to each game in the DB
-            data.forEach(function (seed) {
+            data.forEach(function(seed) {
                 Game.create(seed, function (err, game) {
                     if (err) {
                         console.log(err)

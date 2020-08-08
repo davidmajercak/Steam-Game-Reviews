@@ -24,20 +24,6 @@ app.use(bodyParser.urlencoded({
 //Add this to make .ejs files the default (can leave off the .ejs)
 app.set("view engine", "ejs");
 
-
-
-// Game.create({
-// 				name: "Gunfire Reborn", 
-// 				image: "https://steamcdn-a.akamaihd.net/steam/apps/1217060/header.jpg?t=1591153495",
-// 				description: "An adventure level-based game featured with FPS, Roguelite and RPG."
-// 			}, function(err, game) {
-// 	if(err) {
-// 		console.log(err);
-// 	} else {
-// 		console.log(game + " successfully added to database")
-// 	}
-// })
-
 app.get("/", function(req, res) {
 	res.render("landing");
 });
@@ -84,10 +70,11 @@ app.get("/games/new", function(req, res) {
 //Show - shows more information about one game
 app.get("/games/:id", function(req, res) {
 	//find the game with matching id
-	Game.find({_id: req.params.id}, function(err, foundGame) {
+	Game.findById(req.params.id).populate("comments").exec(function(err, foundGame){
 		if(err) {
 			console.log(err);
 		} else {
+			console.log(foundGame);
 			//render show template with that game
 			res.render("show", {game: foundGame});
 		}
